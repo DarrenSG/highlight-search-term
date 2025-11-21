@@ -29,11 +29,9 @@ const highlightSearchTerm = ({
   const ranges = [];
   try {
     const elements = document.querySelectorAll(selector);
-    Array.from(elements).map((element) => {
+    Array.from(elements).forEach((element) => {
       getTextNodesInElementContainingText(element, search).forEach((node) => {
-        ranges.push(
-          ...getRangesForSearchTermInElement(node.parentElement, search)
-        );
+        ranges.push(...getRangesForSearchTermInTextNode(node, search));
       });
     });
   } catch (error) {
@@ -58,27 +56,20 @@ const getTextNodesInElementContainingText = (element, text) => {
   return nodes;
 };
 
-const getRangesForSearchTermInElement = (element, search) => {
+const getRangesForSearchTermInTextNode = (textNode, search) => {
   const ranges = [];
   const lowerCaseSearch = search.toLowerCase();
-  if (element.childNodes.length === 0) return ranges;
-  // In some frameworks like React, when combining static text with dynamic text, the element may have multiple Text child nodes.
-  // To avoid errors, we must find the child node that actually contains the search term.
-  const childWithSearchTerm = Array.from(element.childNodes).find((node) =>
-    node.textContent?.toLowerCase().includes(lowerCaseSearch)
-  );
-  if (!childWithSearchTerm) return ranges;
-  const text = childWithSearchTerm.textContent?.toLowerCase() || "";
+  const text = textNode.textContent?.toLowerCase() || "";
   let start = 0;
   let index;
   while ((index = text.indexOf(lowerCaseSearch, start)) >= 0) {
     const range = new Range();
-    range.setStart(childWithSearchTerm, index);
-    range.setEnd(childWithSearchTerm, index + search.length);
+    range.setStart(textNode, index);
+    range.setEnd(textNode, index + search.length);
     ranges.push(range);
     start = index + search.length;
   }
   return ranges;
 };
 
-module.exports = { highlightSearchTerm };
+export { highlightSearchTerm };
