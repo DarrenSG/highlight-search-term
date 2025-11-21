@@ -5,9 +5,8 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marmelab/highlight-search-term.git"
+    "url": "git+https://github.com/DarrenSG/highlight-search-term.git"
   },
-  "homepage": "https://marmelab.com/highlight-search-term/",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "files": [
