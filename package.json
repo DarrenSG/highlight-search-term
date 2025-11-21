@@ -1,7 +1,8 @@
 {
   "name": "highlight-search-term",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Highlight search term in a page. Vanilla JS, compatible with frontend frameworks (React, Vite, Angular, etc).",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marmelab/highlight-search-term.git"
@@ -9,11 +10,33 @@
   "homepage": "https://marmelab.com/highlight-search-term/",
   "main": "src/index.js",
   "types": "src/index.d.ts",
+  "files": [
+    "src/index.js",
+    "src/index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "highlight",
+    "search",
+    "text-highlight",
+    "css-custom-highlight-api",
+    "vanilla-js",
+    "framework-agnostic",
+    "dom",
+    "react",
+    "vue",
+    "angular"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "authors": [
-    "Francois Zaninotto"
+    "Francois Zaninotto",
+    "Darren Li"
   ],
   "license": "MIT"
 }
